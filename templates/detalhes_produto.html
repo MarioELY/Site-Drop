@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} - Detalhes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='detalhes_produto.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imagens/logo.jpg') }}" alt="Logo">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('inicio') }}">Início</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Categorias</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="product-details">
+            <div class="product-image">
+                <img src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}">
+            </div>
+            <div class="product-info">
+                <h1>{{ product.name }}</h1>
+                <p class="price">R$ {{ product.price }}</p>
+                <p class="description">{{ product.description }}</p>
+                <p class="stock">Quantidade em Estoque: {{ product.stock_quantity }}</p>
+                <p class="category">Categoria: {{ product.category_id }}</p>
+                <a href="{{ url_for('inicio') }}" class="btn">Voltar para a Loja</a>
+            </div>
+        </div>
+        <div class="product-shelf">
+            <h2>Outros Produtos</h2>
+            <div class="shelf-items">
+                {% for item in produtos_geral %}
+                    <div class="shelf-item">
+                        <a href="{{ url_for('detalhes_produto', product_id=item.id) }}">
+                            <img src="{{ url_for('static', filename=item.image_url) }}" alt="{{ item.name }}">
+                            <p>{{ item.name }}</p>
+                            <p>R$ {{ item.price }}</p>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Sua Loja - Todos os direitos reservados</p>
+    </footer>
+
+</body>
+</html>

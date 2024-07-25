@@ -1,0 +1,112 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,html{
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    background: url('/static/imagens/fundoinicio.avif') no-repeat center center fixed; /* Caminho relativo corrigido */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+.container {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0.3);
+    width: 400px;
+    max-width: 100%;
+    padding: 40px;
+    text-align: center;
+    /*margin-top: 20vh;  Move o container para baixo */
+}
+
+h2{
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+
+
+.input-field{
+    width: 100%;
+    padding: 2px;
+    border-radius: 5px;
+
+}
+
+.email,.password,.confirm_password {
+    margin-bottom: 10px;
+    padding: 6px;
+}
+
+.btn{
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #6e8efb;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover{
+    background: #a777e3;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+li{
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+li.sucess{
+    color: #155724;
+    background-color: #d4edda;
+    border-color: 5px;
+}
+
+li.danger{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+footer{
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+
+}
+
+footer a{
+    color: #6e8efb;
+    text-decoration: none;
+
+}
+
+footer a:hover{
+    text-decoration: underline;
+}
+
+.toggle-password {
+    cursor: pointer;
+    left: 270px;
+    position: absolute;
+    width: 20px;
+  }

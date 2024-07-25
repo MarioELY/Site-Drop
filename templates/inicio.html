@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Página Inicial - Loja</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicio.css') }}">
+</head>
+<body>
+
+    
+        <header class="header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='imagens/logo.jpg') }}">
+
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Produtos</a></li>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container">
+        <div class="hero">
+            <h1>Descubra nossos produtos em destaque!</h1>
+            <a href="#" class="btn">Explorar Agora</a>
+        </div>
+
+        <section class="grid-container">
+            {% for product in products %}
+            <div class="grid-item">
+                <img src="{{url_for('static', filename = product.image_url)}}" alt="{{ product.name }}">
+                <h3>{{ product.name | e }}</h3>
+                <p>{{ product.description | e }}</p>
+                <p class="price">Preço R$ {{ product.price | e }}</p>
+                <a href="{{url_for('detalhes_produto',product_id=product.id)}}">Ver Detalhes</a>
+            </div>
+            {% endfor %}
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2024 Sua Loja - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+</body>
+</html>

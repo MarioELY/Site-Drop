@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='registro.css')}}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Registro</h2> <!-- Define o Titulo da pagina --> 
+
+        <form action="{{url_for('registro')}}" method = "post"> <!-- Define a ação do formulario e o método POST-->
+            {{form.hidden_tag()}}
+            {{ form.csrf_token }} <!-- Adiciona o token CSRF -->
+            <div class="input-field">
+                
+                {{form.email(class="email", placeholder="Digite seu email")}}
+
+                
+                
+                {{form.password(class="password", id="password", placeholder="Senha")}}
+                <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho" class="toggle-password">
+            
+
+                
+                
+                {{form.confirm_password(class="confirm_password", id="confirm_password",placeholder="Confirmar Senha")}}
+                <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho_confirm" class="toggle-password">
+                
+
+            {{form.submit(class="btn")}} <!-- Bptão para enviar o formulario -->     
+
+        </form> 
+
+        <!-- Exibe mensagem de feedback (sucesso ou erro)-->
+         {%with menssagens = get_flashed_messages(with_categories=true) %}
+            {% if menssagens %}
+              <ul>
+                {% for category, message in messagens %}
+                 <li class="{{ category }}">{{message}}</li>
+                {% endfor %}
+              </ul>
+            {%endif%}
+           {% endwith %} 
+    </div>
+    <script>
+                document.getElementById('olho').addEventListener('mousedown', function() {
+            document.getElementById('password').type = 'text';
+        });
+
+        document.getElementById('olho').addEventListener('mouseup', function() {
+            document.getElementById('password').type = 'password';
+        });
+
+        // Para que o password não fique exposto após mover a imagem.
+        document.getElementById('olho').addEventListener('mousemove', function() {
+            document.getElementById('password').type = 'password';
+        });
+
+        document.getElementById('olho_confirm').addEventListener('mousedown', function() {
+            document.getElementById('confirm_password').type = 'text';
+        });
+
+        document.getElementById('olho_confirm').addEventListener('mouseup', function() {
+            document.getElementById('confirm_password').type = 'password';
+        });
+
+        // Para que o password não fique exposto após mover a imagem.
+        document.getElementById('olho_confirm').addEventListener('mousemove', function() {
+            document.getElementById('confirm_password').type = 'password';
+        });
+    </script>
+
+</body>
+</html>

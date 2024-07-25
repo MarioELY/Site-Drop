@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><!-- Declara o tipo de documento e define o idioma como inglês -->
+<head>
+    <meta charset="UTF-8"><!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Ajusta a escala para dispositivos móveis -->
+    <title>Login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Login</h2>
+
+        <form action="{{url_for('login')}}" method="post">
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }} <!-- Adiciona o token CSRF -->
+            
+            <div class="input-field">
+               {{form.email.label}}
+               {{form.email(class="input-name")}}
+                <br>
+                {{form.password.label}}
+                {{form.password(class='password',id='password')}} 
+                <img src="https://cdn0.iconfinder.com/data/icons/ui-icons-pack/100/ui-icon-pack-14-512.png" id="olho" class="toggle-password">
+            </div>
+            {{ form.submit(class="btn") }}
+            <!-- <button type="submit" class="btn">Login</button>      -->
+
+        </form>
+
+        <footer>
+            <p>Não tem uma conta? <a href="{{url_for('registro')}}">Registre-se</a></p>
+        </footer>
+
+    </div>
+    <script>
+        document.getElementById('olho').addEventListener('mousedown', function() {
+                    document.getElementById('password').type = 'text';
+                });
+
+                document.getElementById('olho').addEventListener('mouseup', function() {
+                    document.getElementById('password').type = 'password';
+                });
+
+                // Para que o password não fique exposto apos mover a imagem.
+                document.getElementById('olho').addEventListener('mousemove', function() {
+                    document.getElementById('password').type = 'password';
+                });
+    </script>
+
+</body>
+</html>
